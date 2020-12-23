@@ -324,8 +324,8 @@ int yyFlexLexer::yywrap() { return 1; }
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 4
-#define YY_END_OF_BUFFER 5
+#define YY_NUM_RULES 5
+#define YY_END_OF_BUFFER 6
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -333,9 +333,10 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[10] =
+static yyconst flex_int16_t yy_accept[12] =
     {   0,
-        0,    0,    5,    1,    2,    3,    1,    2,    0
+        0,    0,    6,    2,    3,    4,    1,    2,    3,    1,
+        0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -344,8 +345,8 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    4,    4,    4,
+        4,    4,    4,    4,    4,    4,    4,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -370,31 +371,33 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_int32_t yy_meta[4] =
+static yyconst flex_int32_t yy_meta[5] =
     {   0,
-        1,    2,    3
+        1,    2,    3,    1
     } ;
 
-static yyconst flex_int16_t yy_base[12] =
+static yyconst flex_int16_t yy_base[14] =
     {   0,
-        0,    0,    6,    0,    0,    7,    0,    0,    7,    4,
-        2
+        0,    0,    8,    0,    0,    9,    3,    0,    0,    0,
+        9,    5,    3
     } ;
 
-static yyconst flex_int16_t yy_def[12] =
+static yyconst flex_int16_t yy_def[14] =
     {   0,
-        9,    1,    9,   10,   11,    9,   10,   11,    0,    9,
-        9
+       11,    1,   11,   12,   13,   11,   12,   12,   13,    7,
+        0,   11,   11
     } ;
 
-static yyconst flex_int16_t yy_nxt[11] =
+static yyconst flex_int16_t yy_nxt[14] =
     {   0,
-        4,    5,    6,    8,    7,    9,    3,    9,    9,    9
+        4,    5,    6,    7,    9,    8,   10,   11,    3,   11,
+       11,   11,   11
     } ;
 
-static yyconst flex_int16_t yy_chk[11] =
+static yyconst flex_int16_t yy_chk[14] =
     {   0,
-        1,    1,    1,   11,   10,    3,    9,    9,    9,    9
+        1,    1,    1,    1,   13,   12,    7,    3,   11,   11,
+       11,   11,   11
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -404,9 +407,9 @@ static yyconst flex_int16_t yy_chk[11] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "prueba.l"
+#line 1 "analizador.l"
 /*----- Seccion de Declaraciones ----------------*/
-#line 4 "prueba.l"
+#line 4 "analizador.l"
 #include <iostream>
 #include <fstream>
 
@@ -414,8 +417,9 @@ using namespace std;
 
 ifstream fichero;
 int nc, np, nl;
-void escribir_datos (int dato1, int dato2, int dato3);
-#line 419 "lex.yy.cc"
+int hashtagCount;
+void escribir_datos (int dato1, int dato2, int dato3, int dato4);
+#line 423 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -515,9 +519,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 14 "prueba.l"
+#line 15 "analizador.l"
 
-#line 521 "lex.yy.cc"
+#line 525 "lex.yy.cc"
 
 	if ( !(yy_init) )
 		{
@@ -570,13 +574,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 10 )
+				if ( yy_current_state >= 12 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 7 );
+		while ( yy_base[yy_current_state] != 9 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -602,26 +606,31 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 15 "prueba.l"
-{ np++; nc += yyleng; }
+#line 16 "analizador.l"
+{ hashtagCount++; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 16 "prueba.l"
-{ nc += yyleng; }
+#line 17 "analizador.l"
+{ np++; nc += yyleng; }
 	YY_BREAK
 case 3:
-/* rule 3 can match eol */
 YY_RULE_SETUP
-#line 17 "prueba.l"
-{ nl++; nc++; }
+#line 18 "analizador.l"
+{ nc += yyleng; }
 	YY_BREAK
 case 4:
+/* rule 4 can match eol */
 YY_RULE_SETUP
-#line 18 "prueba.l"
+#line 19 "analizador.l"
+{ nl++; nc++; }
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
+#line 20 "analizador.l"
 ECHO;
 	YY_BREAK
-#line 625 "lex.yy.cc"
+#line 634 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1002,7 +1011,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 10 )
+			if ( yy_current_state >= 12 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1030,11 +1039,11 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 10 )
+		if ( yy_current_state >= 12 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 9);
+	yy_is_jam = (yy_current_state == 11);
 
 	return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1521,7 +1530,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 18 "prueba.l"
+#line 20 "analizador.l"
 
 
 
@@ -1538,15 +1547,16 @@ exit (1);
 }
 }
 else exit(1);
-nc = np = nl = 0;
+nc = np = nl = hashtagCount = 0;
 yyFlexLexer flujo (&fichero,0);
 flujo.yylex();
-escribir_datos(nc,np,nl);
+escribir_datos(nc,np,nl,hashtagCount);
 return 0;
 }
-void escribir_datos (int dato1, int dato2, int dato3)
+void escribir_datos (int dato1, int dato2, int dato3, int dato4)
 {
 cout << "Num_lineas = " << dato3 << endl;
 cout << "Num_palabras = " << dato2 << endl;
 cout << "Num_caracteres = " << dato1 << endl;
+cout << "Num_colores = " << dato4 << endl;
 }
