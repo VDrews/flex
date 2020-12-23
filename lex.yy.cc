@@ -441,7 +441,8 @@ int hashtagCount;
 int labelCount;
 
 void escribir_datos (int dato1, int dato2, int dato3, int dato4, int dato5);
-#line 445 "lex.yy.cc"
+string barra_carga(int valor, int total);
+#line 446 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -541,9 +542,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 23 "analizador.l"
+#line 24 "analizador.l"
 
-#line 547 "lex.yy.cc"
+#line 548 "lex.yy.cc"
 
 	if ( !(yy_init) )
 		{
@@ -628,7 +629,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 24 "analizador.l"
+#line 25 "analizador.l"
 {
   string word(yytext);
   word = word.substr(1, word.length() - 1);
@@ -644,7 +645,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 36 "analizador.l"
+#line 37 "analizador.l"
 {
   labelCount++;
   string word(yytext);
@@ -661,15 +662,15 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 49 "analizador.l"
+#line 50 "analizador.l"
 { hashtagCount++; colores.push_back(yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 50 "analizador.l"
+#line 51 "analizador.l"
 ECHO;
 	YY_BREAK
-#line 673 "lex.yy.cc"
+#line 674 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1569,7 +1570,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 50 "analizador.l"
+#line 51 "analizador.l"
 
 
 
@@ -1607,7 +1608,7 @@ for(; ite != elementos.end(); ite++) {
   }
   string estaCerrado = valoresIguales ? "CERRADO INCORRECTAMENTE" : "CERRADO CORRECTAMENTE";
   cout << ite->first << '\t' << ite->second << '\t' << elementosIniciales.find(ite->first)->second << '\t' 
-       << estaCerrado << endl;
+       << estaCerrado << '\t' << barra_carga(ite->second, labelCount) << endl;
 }
 
 return 0;
@@ -1616,4 +1617,15 @@ void escribir_datos (int dato1, int dato2, int dato3, int dato4, int dato5)
 {
 cout << "Num_colores = " << dato4 << endl;
 cout << "Num_etiquetas = " << dato5 << endl;
+}
+
+string barra_carga(int valor, int total) {
+  string barra = "";
+  float porcentaje = ((valor * 1.0)/(total * 1.0)) * 100;
+  for (int i = 0; i < porcentaje / 5; i++)
+  {
+    barra += "██"; 
+  }
+
+  return barra;
 }

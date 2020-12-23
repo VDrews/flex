@@ -18,6 +18,7 @@ int hashtagCount;
 int labelCount;
 
 void escribir_datos (int dato1, int dato2, int dato3, int dato4, int dato5);
+string barra_carga(int valor, int total);
 %}
 
 %%
@@ -83,7 +84,7 @@ for(; ite != elementos.end(); ite++) {
   }
   string estaCerrado = valoresIguales ? "CERRADO INCORRECTAMENTE" : "CERRADO CORRECTAMENTE";
   cout << ite->first << '\t' << ite->second << '\t' << elementosIniciales.find(ite->first)->second << '\t' 
-       << estaCerrado << endl;
+       << estaCerrado << '\t' << barra_carga(ite->second, labelCount) << endl;
 }
 
 return 0;
@@ -92,4 +93,15 @@ void escribir_datos (int dato1, int dato2, int dato3, int dato4, int dato5)
 {
 cout << "Num_colores = " << dato4 << endl;
 cout << "Num_etiquetas = " << dato5 << endl;
+}
+
+string barra_carga(int valor, int total) {
+  string barra = "";
+  float porcentaje = ((valor * 1.0)/(total * 1.0)) * 100;
+  for (int i = 0; i < porcentaje / 5; i++)
+  {
+    barra += "██"; 
+  }
+
+  return barra;
 }
