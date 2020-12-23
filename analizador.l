@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
   hashtagCount = labelCount = 0;
   yyFlexLexer flujo(&fichero, 0);
   flujo.yylex();
-  escribir_datos(nc, np, nl, hashtagCount, labelCount);
+  escribir_datos(hashtagCount, labelCount);
 
   return 0;
 }
