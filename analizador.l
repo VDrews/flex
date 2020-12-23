@@ -30,6 +30,7 @@ string barra_carga(int valor, int total);
 
 /*----- Sección de reglas ----------------*/
 %%
+. {}
 \<[a-zA-Z0-9]+ {
   string word(yytext);
   word = word.substr(1, word.length() - 1);
@@ -58,6 +59,7 @@ string barra_carga(int valor, int total);
 (#[0-9a-f]{6}|rgb[\(].*\)) { 
     hashtagCount++; colores.push_back(yytext);
 }
+
 %%
 
 
