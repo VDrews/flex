@@ -9,14 +9,18 @@
 
 using namespace std;
 
+//Apertura de los ficheros .html
 ifstream fichero;
 
-list<string> colores;
-map<string, int> elementos;
-map<string, int> elementosIniciales;
-int hashtagCount;
-int labelCount;
+//Variables para mostrar información
+list<string> colores;                 //Lista de colores
+map<string, int> elementos;           //Map con etiquetas (labels) y frecuencia. Se usan los finales (</..>)
+map<string, int> elementosIniciales;  //Ídem, con los iniciales (<..>)
+int hashtagCount;                     //Contador de colores (rgb(), #hex)
+int labelCount;                       //Contador de etiquetas
 
+//Función de escritura de datos
+//Parámetros: hashtagCount, labelCount
 void escribir_datos (int dato1, int dato2);
 %}
 
@@ -62,6 +66,7 @@ void escribir_datos (int dato1, int dato2);
 /*----- Sección de procedimientos --------*/
 int main(int argc, char *argv[])
 {
+    //Apertura de fichero
     if (argc == 2)
     {
         fichero.open(argv[1]);
@@ -73,6 +78,7 @@ int main(int argc, char *argv[])
     }
     else exit(1);
     
+    //Inicialización de variables
     hashtagCount = labelCount = 0;
     yyFlexLexer flujo(&fichero, 0);
     flujo.yylex();
@@ -81,16 +87,22 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+//Implementación de la función de escritura.
+
 void escribir_datos(int dato1, int dato2)
 {
+    //Muestra el nr. de colores y etiquetas basándose en la 2. y 3. reglas
     cout << "Num_colores = " << dato1 << endl;
     cout << "Num_etiquetas = " << dato2 << endl;
 
+    //Itera sobre la lista de colores
     cout << "\nCOLORES USADOS\n";
     list<string>::iterator it = colores.begin();
     for (; it != colores.end(); it++)
         cout << *it << endl;
 
+    //Itera sobre la lista de elementos (finales) y compara con la lista de elementos iniciales. Muestra en pantalla el nombre de etiqueta y su número de finales e iniciales
+    //Si no coincideran, la sentencia HTML no está cerrada, muestra "ABIERTO"
     cout << "\nELEMENTOS USADOS\n";
     map<string, int>::iterator ite = elementos.begin();
 
@@ -101,7 +113,7 @@ void escribir_datos(int dato1, int dato2)
         {
             valoresIguales = (elementosIniciales.find(ite->first)->second != ite->second);
         }
-        string estaCerrado = valoresIguales ? "CERRADO INCORRECTAMENTE" : "CERRADO CORRECTAMENTE";
+        string estaCerrado = valoresIguales ? "ABIERTO" : "cerrado";
         cout << ite->first << '\t' << ite->second << '\t' << elementosIniciales.find(ite->first)->second << '\t'
              << estaCerrado << endl;
     }

@@ -420,18 +420,22 @@ static const flex_int16_t yy_chk[55] =
 
 using namespace std;
 
+//Apertura de los ficheros .html
 ifstream fichero;
 
-list<string> colores;
-map<string, int> elementos;
-map<string, int> elementosIniciales;
-int hashtagCount;
-int labelCount;
+//Variables para mostrar información
+list<string> colores;                 //Lista de colores
+map<string, int> elementos;           //Map con etiquetas (labels) y frecuencia. Se usan los finales (</..>)
+map<string, int> elementosIniciales;  //Ídem, con los iniciales (<..>)
+int hashtagCount;                     //Contador de colores (rgb(), #hex)
+int labelCount;                       //Contador de etiquetas
 
+//Función de escritura de datos
+//Parámetros: hashtagCount, labelCount
 void escribir_datos (int dato1, int dato2);
-#line 432 "lex.yy.cc"
+#line 436 "lex.yy.cc"
 /*----------------Sección de Reglas----------------*/
-#line 434 "lex.yy.cc"
+#line 438 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -563,9 +567,9 @@ YY_DECL
 		}
 
 	{
-#line 25 "analizador.l"
+#line 29 "analizador.l"
 
-#line 568 "lex.yy.cc"
+#line 572 "lex.yy.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -624,7 +628,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 26 "analizador.l"
+#line 30 "analizador.l"
 {
   string word(yytext);
   word = word.substr(1, word.length() - 1);
@@ -642,7 +646,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 41 "analizador.l"
+#line 45 "analizador.l"
 {
   labelCount++;
   string word(yytext);
@@ -661,17 +665,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 57 "analizador.l"
+#line 61 "analizador.l"
 { 
   hashtagCount++; colores.push_back(yytext);
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 60 "analizador.l"
+#line 64 "analizador.l"
 ECHO;
 	YY_BREAK
-#line 674 "lex.yy.cc"
+#line 678 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1634,12 +1638,13 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 60 "analizador.l"
+#line 64 "analizador.l"
 
 
 /*----- Sección de procedimientos --------*/
 int main(int argc, char *argv[])
 {
+    //Apertura de fichero
     if (argc == 2)
     {
         fichero.open(argv[1]);
@@ -1651,6 +1656,7 @@ int main(int argc, char *argv[])
     }
     else exit(1);
     
+    //Inicialización de variables
     hashtagCount = labelCount = 0;
     yyFlexLexer flujo(&fichero, 0);
     flujo.yylex();
@@ -1659,16 +1665,22 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+//Implementación de la función de escritura.
+
 void escribir_datos(int dato1, int dato2)
 {
+    //Muestra el nr. de colores y etiquetas basándose en la 2. y 3. reglas
     cout << "Num_colores = " << dato1 << endl;
     cout << "Num_etiquetas = " << dato2 << endl;
 
+    //Itera sobre la lista de colores
     cout << "\nCOLORES USADOS\n";
     list<string>::iterator it = colores.begin();
     for (; it != colores.end(); it++)
         cout << *it << endl;
 
+    //Itera sobre la lista de elementos (finales) y compara con la lista de elementos iniciales.
+    //Si no coincideran final
     cout << "\nELEMENTOS USADOS\n";
     map<string, int>::iterator ite = elementos.begin();
 
@@ -1679,7 +1691,7 @@ void escribir_datos(int dato1, int dato2)
         {
             valoresIguales = (elementosIniciales.find(ite->first)->second != ite->second);
         }
-        string estaCerrado = valoresIguales ? "CERRADO INCORRECTAMENTE" : "CERRADO CORRECTAMENTE";
+        string estaCerrado = valoresIguales ? "ABIERTO" : "cerrado";
         cout << ite->first << '\t' << ite->second << '\t' << elementosIniciales.find(ite->first)->second << '\t'
              << estaCerrado << endl;
     }
