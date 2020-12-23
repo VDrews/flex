@@ -324,8 +324,8 @@ int yyFlexLexer::yywrap() { return 1; }
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 3
-#define YY_END_OF_BUFFER 4
+#define YY_NUM_RULES 4
+#define YY_END_OF_BUFFER 5
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -333,10 +333,11 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[16] =
+static yyconst flex_int16_t yy_accept[24] =
     {   0,
-        0,    0,    4,    3,    3,    3,    0,    0,    2,    0,
-        0,    0,    0,    1,    0
+        0,    0,    5,    4,    4,    4,    4,    0,    0,    1,
+        0,    0,    0,    0,    0,    2,    0,    0,    0,    3,
+        0,    3,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -345,16 +346,16 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    3,    1,    1,    1,    1,    4,
-        5,    1,    1,    1,    1,    1,    1,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    6,    7,    6,    6,
+        5,    1,    1,    1,    1,    1,    6,    7,    7,    7,
+        7,    7,    7,    7,    7,    7,    7,    1,    1,    8,
+        1,    9,    1,    1,   10,   10,   10,   10,   10,   10,
+       10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
+       10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
+        1,    1,    1,    1,    1,    1,    7,   11,    7,    7,
 
-        6,    6,    4,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    4,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        7,    7,   12,   10,   10,   10,   10,   10,   10,   10,
+       10,   10,   10,   13,   10,   10,   10,   10,   10,   10,
+       10,   10,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -371,37 +372,46 @@ static yyconst flex_int32_t yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst flex_int32_t yy_meta[8] =
+static yyconst flex_int32_t yy_meta[14] =
     {   0,
-        1,    2,    1,    1,    1,    3,    3
+        1,    2,    1,    1,    1,    3,    4,    1,    5,    3,
+        4,    3,    3
     } ;
 
-static yyconst flex_int16_t yy_base[23] =
+static yyconst flex_int16_t yy_base[34] =
     {   0,
-        0,    0,   19,   20,    0,   13,    0,   12,   11,    0,
-        0,    0,    0,   20,   20,   12,    7,   11,   10,    9,
-        8,    6
+        0,   11,   23,   41,    0,   16,    9,    0,    0,   14,
+        7,    0,    8,   12,    0,   41,   10,    0,    7,    6,
+        0,   41,   41,   24,    6,   27,    5,   31,    3,    2,
+       35,    1,    0
     } ;
 
-static yyconst flex_int16_t yy_def[23] =
+static yyconst flex_int16_t yy_def[34] =
     {   0,
-       15,    1,   15,   15,   16,   17,   18,   17,   17,   19,
-       20,   21,   22,   15,    0,   15,   15,   15,   15,   15,
-       15,   15
+       24,   24,   23,   23,   25,   26,   23,   27,   28,   26,
+       23,   29,   28,   23,   30,   23,   31,   32,   31,   31,
+       33,   23,    0,   23,   23,   23,   23,   23,   23,   23,
+       23,   23,   23
     } ;
 
-static yyconst flex_int16_t yy_nxt[28] =
+static yyconst flex_int16_t yy_nxt[55] =
     {   0,
-        4,    4,    5,    6,    4,    4,    6,    8,   14,    8,
-       13,   12,   11,   10,    7,    9,    9,    9,   15,    3,
-       15,   15,   15,   15,   15,   15,   15
+       23,   23,    5,   22,   21,   18,   15,    6,   12,    8,
+       20,   20,    7,    5,   20,   17,   16,   14,    6,   23,
+       11,    9,   23,    7,    4,    4,    4,    4,    4,   10,
+       10,   13,   23,   13,   13,   19,   23,   19,   19,   19,
+        3,   23,   23,   23,   23,   23,   23,   23,   23,   23,
+       23,   23,   23,   23
     } ;
 
-static yyconst flex_int16_t yy_chk[28] =
+static yyconst flex_int16_t yy_chk[55] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,   17,   22,   17,
-       21,   20,   19,   18,   16,    9,    8,    6,    3,   15,
-       15,   15,   15,   15,   15,   15,   15
+        0,    0,    1,   33,   32,   30,   29,    1,   27,   25,
+       20,   19,    1,    2,   17,   14,   13,   11,    2,   10,
+        7,    6,    3,    2,   24,   24,   24,   24,   24,   26,
+       26,   28,    0,   28,   28,   31,    0,   31,   31,   31,
+       23,   23,   23,   23,   23,   23,   23,   23,   23,   23,
+       23,   23,   23,   23
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -416,16 +426,22 @@ static yyconst flex_int16_t yy_chk[28] =
 #line 4 "analizador.l"
 #include <iostream>
 #include <fstream>
+#include <list>
+#include <map>
 
 using namespace std;
 
 ifstream fichero;
 int nc, np, nl;
+list<string> colores;
+
+map<string, int> elementos;
+map<string, int> elementosIniciales;
 int hashtagCount;
 int labelCount;
 
 void escribir_datos (int dato1, int dato2, int dato3, int dato4, int dato5);
-#line 429 "lex.yy.cc"
+#line 445 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -525,9 +541,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 17 "analizador.l"
+#line 23 "analizador.l"
 
-#line 531 "lex.yy.cc"
+#line 547 "lex.yy.cc"
 
 	if ( !(yy_init) )
 		{
@@ -580,13 +596,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 16 )
+				if ( yy_current_state >= 24 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 20 );
+		while ( yy_base[yy_current_state] != 41 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -612,20 +628,48 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 18 "analizador.l"
-{ hashtagCount++;}
+#line 24 "analizador.l"
+{
+  string word(yytext);
+  word = word.substr(1, word.length() - 1);
+
+  if (elementosIniciales.find(word) == elementosIniciales.end()) {
+    elementosIniciales.insert(pair<string,int>(word,1));
+  }
+  else {
+    auto it = elementosIniciales.find(word); 
+    it->second += 1;
+  }
+}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 19 "analizador.l"
-{ hashtagCount++;}
+#line 36 "analizador.l"
+{
+  labelCount++;
+  string word(yytext);
+  word = word.substr(2, word.length() - 3);
+
+  if (elementos.find(word) == elementos.end()) {
+    elementos.insert(pair<string,int>(word,1));
+  }
+  else {
+    auto it = elementos.find(word); 
+    it->second += 1;
+  }
+}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 20 "analizador.l"
+#line 49 "analizador.l"
+{ hashtagCount++; colores.push_back(yytext);}
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 50 "analizador.l"
 ECHO;
 	YY_BREAK
-#line 629 "lex.yy.cc"
+#line 673 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1006,7 +1050,7 @@ int yyFlexLexer::yy_get_next_buffer()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 16 )
+			if ( yy_current_state >= 24 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1034,11 +1078,11 @@ int yyFlexLexer::yy_get_next_buffer()
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 16 )
+		if ( yy_current_state >= 24 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 15);
+	yy_is_jam = (yy_current_state == 23);
 
 	return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1525,7 +1569,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 20 "analizador.l"
+#line 50 "analizador.l"
 
 
 
@@ -1546,13 +1590,30 @@ nc = np = nl = hashtagCount = labelCount = 0;
 yyFlexLexer flujo (&fichero,0);
 flujo.yylex();
 escribir_datos(nc,np,nl,hashtagCount, labelCount);
+
+cout << "\nCOLORES USADOS\n";
+list<string>::iterator it = colores.begin();
+for(; it != colores.end(); it++) {
+  cout << *it << endl;
+}
+
+cout << "\nELEMENTOS USADOS\n";
+map<string, int>::iterator ite = elementos.begin();
+
+for(; ite != elementos.end(); ite++) {
+  bool valoresIguales = false;
+  if (elementosIniciales.find(ite->first) != elementosIniciales.end()) {
+    valoresIguales = (elementosIniciales.find(ite->first)->second != ite->second);
+  }
+  string estaCerrado = valoresIguales ? "CERRADO INCORRECTAMENTE" : "CERRADO CORRECTAMENTE";
+  cout << ite->first << '\t' << ite->second << '\t' << elementosIniciales.find(ite->first)->second << '\t' 
+       << estaCerrado << endl;
+}
+
 return 0;
 }
 void escribir_datos (int dato1, int dato2, int dato3, int dato4, int dato5)
 {
-cout << "Num_lineas = " << dato3 << endl;
-cout << "Num_palabras = " << dato2 << endl;
-cout << "Num_caracteres = " << dato1 << endl;
 cout << "Num_colores = " << dato4 << endl;
 cout << "Num_etiquetas = " << dato5 << endl;
 }
