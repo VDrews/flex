@@ -613,7 +613,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 18 "analizador.l"
-{ hashtagCount++; cout << yytext << endl;}
+{ hashtagCount++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -622,7 +622,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 21 "analizador.l"
+#line 20 "analizador.l"
 ECHO;
 	YY_BREAK
 #line 629 "lex.yy.cc"
@@ -1525,7 +1525,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 21 "analizador.l"
+#line 20 "analizador.l"
 
 
 

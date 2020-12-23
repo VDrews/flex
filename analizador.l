@@ -15,9 +15,9 @@ void escribir_datos (int dato1, int dato2, int dato3, int dato4, int dato5);
 %}
 
 %%
-#[0-9a-f]{6} { hashtagCount++; cout << yytext << endl;}
+#[0-9a-f]{6} { hashtagCount++;}
 [rgb\(].*\) { hashtagCount++;}
-
+[<\/.+>]$ { labelCount++; }
 %%
 
 /*----- Seccion de Procedimientos --------*/
